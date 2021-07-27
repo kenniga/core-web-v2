@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { gql } from "@apollo/client";
+
+import client from '../apollo/apollo-client'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -67,3 +72,34 @@ export default function Home() {
     </div>
   )
 }
+
+// This gets called on every request
+export async function getServerSideProps() {
+    const data = await client.query({
+        query: gql`
+          query GetFooterQuery {
+            GetFooter(request: {
+                uuids: [],
+                page: HOMEPAGE,
+                priceType: SALE,
+                propertyType: 0
+                }) {
+                    footer {
+                        title
+                        footerItems {
+                            subtitle
+                            url
+                        }
+                    }
+                }
+            }
+        `,
+      });
+      console.debug( '====CEK SINI BOS', data);
+    
+      return {
+        props: {
+            data
+        },
+      };
+  }
