@@ -1,0 +1,9 @@
+schema:
+    - https://release.core.rumah123.com/graphql/query: # path grapql core service
+          headers:
+              X-Client: Y29yZS1jbGllbnQtZm9yLXdlYgo=
+generates:
+    ./src/generated/graphql/index.ts:
+        plugins:
+            - typescript
+            - typescript-operations
