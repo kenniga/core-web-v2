@@ -1,13 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { ReactNode } from 'react';
 
-import client from '@/modules/apollo/apollo-client'
+import client from '@/modules/apollo/apollo-client';
+import styles from '@/styles/Home.module.css';
 
-import styles from '@/styles/Home.module.css'
-
-export default function Home() {
-
+/**
+ *
+ */
+export default function Home(): ReactNode {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +25,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{` `}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -63,43 +66,46 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{` `}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
 
-// This gets called on every request
-export async function getServerSideProps() {
-    const data = await client.query({
-        query: gql`
-          query GetFooterQuery {
-            GetFooter(request: {
-                uuids: [],
-                page: HOMEPAGE,
-                priceType: SALE,
-                propertyType: 0
-                }) {
-                    footer {
-                        title
-                        footerItems {
-                            subtitle
-                            url
-                        }
-                    }
-                }
+/**
+ *
+ */
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await client.query({
+    query: gql`
+      query GetFooterQuery {
+        GetFooter(
+          request: {
+            uuids: []
+            page: HOMEPAGE
+            priceType: SALE
+            propertyType: 0
+          }
+        ) {
+          footer {
+            title
+            footerItems {
+              subtitle
+              url
             }
-        `,
-      });
-      console.debug( '====CEK SINI BOS', data);
+          }
+        }
+      }
+    `
+  });
 
-      return {
-        props: {
-            data
-        },
-      };
-  }
+  return {
+    props: {
+      data
+    }
+  };
+};

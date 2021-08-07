@@ -4,5 +4,5 @@
  * @since 2021.08.07
  */
 export interface ISampleResponseAPI {
-    response: Record<string, unknown>
+  response: Record<string, unknown>;
 }

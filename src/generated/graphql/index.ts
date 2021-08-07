@@ -1,15 +1,19 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
   Boolean: boolean;
-  Int: number;
   Float: number;
+  ID: string;
+  Int: number;
   Map: any;
+  String: string;
 };
 
 export type AreaSpecialist = {
@@ -20,13 +24,13 @@ export type AreaSpecialist = {
 
 export type Article = {
   __typename?: 'Article';
-  kind: Scalars['String'];
-  id: Scalars['Int'];
-  url: Scalars['String'];
   cover: ArticleCover;
-  title: Scalars['String'];
+  id: Scalars['Int'];
+  kind: Scalars['String'];
   snippet?: Maybe<Scalars['String']>;
   time?: Maybe<Time>;
+  title: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type ArticleCover = {
@@ -44,8 +48,8 @@ export type ArticleCoverMedia = {
 export type Basic = {
   __typename?: 'Basic';
   id: Scalars['String'];
-  name: Scalars['String'];
   label: Scalars['String'];
+  name: Scalars['String'];
 };
 
 export type CancelOtpRequest = {
@@ -66,15 +70,15 @@ export type ContactInfo = {
 };
 
 export enum ContactType {
-  Email = 'EMAIL',
-  PhoneNumber = 'PHONE_NUMBER',
-  Whatsapp = 'WHATSAPP',
-  Address = 'ADDRESS',
-  Website = 'WEBSITE',
-  FacebookUid = 'FACEBOOK_UID',
-  GoogleUid = 'GOOGLE_UID',
-  FirebaseCloudMessagingToken = 'FIREBASE_CLOUD_MESSAGING_TOKEN',
-  ApplePushNotificationToken = 'APPLE_PUSH_NOTIFICATION_TOKEN'
+  Address = `ADDRESS`,
+  PhoneNumber = `PHONE_NUMBER`,
+  Whatsapp = `WHATSAPP`,
+  Email = `EMAIL`,
+  FirebaseCloudMessagingToken = `FIREBASE_CLOUD_MESSAGING_TOKEN`,
+  FacebookUid = `FACEBOOK_UID`,
+  GoogleUid = `GOOGLE_UID`,
+  Website = `WEBSITE`,
+  ApplePushNotificationToken = `APPLE_PUSH_NOTIFICATION_TOKEN`
 }
 
 export type DeleteFavoriteRequest = {
@@ -83,9 +87,9 @@ export type DeleteFavoriteRequest = {
 
 export type DeleteFavoriteResponse = {
   __typename?: 'DeleteFavoriteResponse';
+  isSuccess?: Maybe<Scalars['Boolean']>;
   statusCode?: Maybe<Scalars['Int']>;
   statusMessage?: Maybe<Scalars['String']>;
-  isSuccess?: Maybe<Scalars['Boolean']>;
 };
 
 export type EnquireResponse = {
@@ -98,115 +102,115 @@ export type EnquireResponse = {
 
 export type Enquiry = {
   __typename?: 'Enquiry';
-  userUuid: Scalars['String'];
   agentUuid: Scalars['String'];
-  propertyUuid: Scalars['String'];
+  messages: Scalars['String'];
   name: Scalars['String'];
   phoneNumber: Scalars['String'];
-  messages: Scalars['String'];
+  propertyUuid: Scalars['String'];
+  userUuid: Scalars['String'];
 };
 
 export type EnquiryRequest = {
-  userUuid?: Maybe<Scalars['String']>;
-  agentUuid?: Maybe<Scalars['String']>;
-  propertyUuid?: Maybe<Scalars['String']>;
   agentIds?: Maybe<Array<Maybe<Scalars['String']>>>;
-  originId?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+  agentUuid?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
-  phoneNumber?: Maybe<Scalars['String']>;
   messages?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  originId?: Maybe<Scalars['String']>;
   pageLabel?: Maybe<Scalars['String']>;
+  phoneNumber?: Maybe<Scalars['String']>;
+  propertyUuid?: Maybe<Scalars['String']>;
   subscribe?: Maybe<Scalars['Int']>;
+  userUuid?: Maybe<Scalars['String']>;
 };
 
 export enum EnumFooterPage {
-  Homepage = 'HOMEPAGE',
-  Srp = 'SRP',
-  Newlaunch = 'NEWLAUNCH'
+  Homepage = `HOMEPAGE`,
+  Newlaunch = `NEWLAUNCH`,
+  Srp = `SRP`
 }
 
 export enum EnumPriceType {
-  Sale = 'SALE',
-  Rent = 'RENT'
+  Rent = `RENT`,
+  Sale = `SALE`
 }
 
 export enum EnumSubChannel {
-  All = 'ALL',
-  NewLaunch = 'NEW_LAUNCH',
-  SubSale = 'SUB_SALE',
-  SubRent = 'SUB_RENT'
+  All = `ALL`,
+  NewLaunch = `NEW_LAUNCH`,
+  SubRent = `SUB_RENT`,
+  SubSale = `SUB_SALE`
 }
 
 export type FindPropertiesByFiltersRequest = {
-  portalIds?: Maybe<Array<Scalars['Int']>>;
-  title?: Maybe<Scalars['String']>;
-  propertyTypes?: Maybe<Array<Scalars['Int']>>;
-  priceTypes?: Maybe<Array<Scalars['Int']>>;
-  minPrice: Scalars['Float'];
-  maxPrice: Scalars['Float'];
-  minBedrooms: Scalars['Int'];
-  maxBedrooms: Scalars['Int'];
-  minBathrooms: Scalars['Int'];
-  maxBathrooms: Scalars['Int'];
-  minLandSize: Scalars['Int'];
-  maxLandSize: Scalars['Int'];
-  minBuildingSize: Scalars['Int'];
-  maxBuildingSize: Scalars['Int'];
-  propertySort: PropertySearchSort;
-  locations?: Maybe<Array<Scalars['String']>>;
-  query: Scalars['String'];
-  transactedIncluded: Scalars['Boolean'];
-  subChannel: EnumSubChannel;
-  paginationRequest?: Maybe<PaginationRequest>;
   agents?: Maybe<Scalars['String']>;
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
   isCombineSearch?: Maybe<Scalars['Boolean']>;
   isVerified?: Maybe<Scalars['Boolean']>;
+  latitude?: Maybe<Scalars['Float']>;
+  locations?: Maybe<Array<Scalars['String']>>;
+  longitude?: Maybe<Scalars['Float']>;
+  maxBathrooms: Scalars['Int'];
+  maxBedrooms: Scalars['Int'];
+  maxBuildingSize: Scalars['Int'];
+  maxLandSize: Scalars['Int'];
+  maxPrice: Scalars['Float'];
+  minBathrooms: Scalars['Int'];
+  minBedrooms: Scalars['Int'];
+  minBuildingSize: Scalars['Int'];
+  minLandSize: Scalars['Int'];
+  minPrice: Scalars['Float'];
+  paginationRequest?: Maybe<PaginationRequest>;
+  portalIds?: Maybe<Array<Scalars['Int']>>;
+  priceTypes?: Maybe<Array<Scalars['Int']>>;
+  propertySort: PropertySearchSort;
+  propertyTypes?: Maybe<Array<Scalars['Int']>>;
+  query: Scalars['String'];
+  subChannel: EnumSubChannel;
+  title?: Maybe<Scalars['String']>;
+  transactedIncluded: Scalars['Boolean'];
 };
 
 export type FindPropertiesByFiltersRequestParsed = {
   __typename?: 'FindPropertiesByFiltersRequestParsed';
-  portalIds?: Maybe<Array<Scalars['Int']>>;
-  title?: Maybe<Scalars['String']>;
-  propertyTypes?: Maybe<Array<Scalars['Int']>>;
-  priceTypes?: Maybe<Array<Scalars['Int']>>;
-  minPrice: Scalars['Float'];
-  maxPrice: Scalars['Float'];
-  minBedrooms: Scalars['Int'];
-  maxBedrooms: Scalars['Int'];
-  minBathrooms: Scalars['Int'];
-  maxBathrooms: Scalars['Int'];
-  minLandSize: Scalars['Int'];
-  maxLandSize: Scalars['Int'];
-  minBuildingSize: Scalars['Int'];
-  maxBuildingSize: Scalars['Int'];
-  propertySort: PropertySearchSort;
-  locations?: Maybe<Array<Scalars['String']>>;
-  query: Scalars['String'];
-  transactedIncluded: Scalars['Boolean'];
-  subChannel: EnumSubChannel;
-  paginationRequestParsed?: Maybe<PaginationRequestParsed>;
   agents?: Maybe<Scalars['String']>;
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
   isCombineSearch?: Maybe<Scalars['Boolean']>;
   isVerified?: Maybe<Scalars['Boolean']>;
+  latitude?: Maybe<Scalars['Float']>;
+  locations?: Maybe<Array<Scalars['String']>>;
+  longitude?: Maybe<Scalars['Float']>;
+  maxBathrooms: Scalars['Int'];
+  maxBedrooms: Scalars['Int'];
+  maxBuildingSize: Scalars['Int'];
+  maxLandSize: Scalars['Int'];
+  maxPrice: Scalars['Float'];
+  minBathrooms: Scalars['Int'];
+  minBedrooms: Scalars['Int'];
+  minBuildingSize: Scalars['Int'];
+  minLandSize: Scalars['Int'];
+  minPrice: Scalars['Float'];
+  paginationRequestParsed?: Maybe<PaginationRequestParsed>;
+  portalIds?: Maybe<Array<Scalars['Int']>>;
+  priceTypes?: Maybe<Array<Scalars['Int']>>;
+  propertySort: PropertySearchSort;
+  propertyTypes?: Maybe<Array<Scalars['Int']>>;
+  query: Scalars['String'];
+  subChannel: EnumSubChannel;
+  title?: Maybe<Scalars['String']>;
+  transactedIncluded: Scalars['Boolean'];
 };
 
 export type FindPropertiesByFiltersResponse = {
   __typename?: 'FindPropertiesByFiltersResponse';
-  properties?: Maybe<Array<Maybe<Property>>>;
   areaSpecialists?: Maybe<Array<Maybe<AreaSpecialist>>>;
   paginationResponse?: Maybe<PaginationResponse>;
   parsedRequest?: Maybe<FindPropertiesByFiltersRequestParsed>;
+  properties?: Maybe<Array<Maybe<Property>>>;
 };
 
 export type Footer = {
   __typename?: 'Footer';
-  title: Scalars['String'];
   footerItems?: Maybe<Array<Maybe<FooterItems>>>;
+  title: Scalars['String'];
 };
 
 export type FooterItems = {
@@ -217,10 +221,10 @@ export type FooterItems = {
 
 export type FormattedValue = {
   __typename?: 'FormattedValue';
-  name: Scalars['String'];
-  label: Scalars['String'];
-  value: Scalars['String'];
   formattedValue: Scalars['String'];
+  label: Scalars['String'];
+  name: Scalars['String'];
+  value: Scalars['String'];
 };
 
 export type GetFavoritePropertiesRequest = {
@@ -233,11 +237,11 @@ export type GetFavoritePropertiesResponse = {
 };
 
 export type GetFooterRequest = {
-  uuids?: Maybe<Array<Scalars['String']>>;
   page?: Maybe<EnumFooterPage>;
+  portalId?: Maybe<Scalars['Int']>;
   priceType?: Maybe<EnumPriceType>;
   propertyType?: Maybe<Scalars['Int']>;
-  portalId?: Maybe<Scalars['Int']>;
+  uuids?: Maybe<Array<Scalars['String']>>;
 };
 
 export type GetFooterResponse = {
@@ -256,8 +260,8 @@ export type GetPropertyByOriginIdResponse = {
 };
 
 export type GetPropertyRequest = {
-  uuid: Scalars['String'];
   portalId?: Maybe<Scalars['Int']>;
+  uuid: Scalars['String'];
 };
 
 export type GetPropertyResponse = {
@@ -273,25 +277,25 @@ export type InstanceInfo = {
 
 export type KeyPoint = {
   __typename?: 'KeyPoint';
-  title: Scalars['String'];
   description: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type Location = {
   __typename?: 'Location';
-  uuid: Scalars['ID'];
-  level: Scalars['Int'];
-  name: Scalars['String'];
-  locationType: Scalars['Int'];
-  text: Scalars['String'];
-  country?: Maybe<Basic>;
-  province?: Maybe<Basic>;
+  building?: Maybe<Basic>;
   city?: Maybe<Basic>;
+  country?: Maybe<Basic>;
   district?: Maybe<Basic>;
   estate?: Maybe<Basic>;
-  street?: Maybe<Basic>;
-  building?: Maybe<Basic>;
+  level: Scalars['Int'];
+  locationType: Scalars['Int'];
+  name: Scalars['String'];
   postalCode?: Maybe<Basic>;
+  province?: Maybe<Basic>;
+  street?: Maybe<Basic>;
+  text: Scalars['String'];
+  uuid: Scalars['ID'];
   village?: Maybe<Basic>;
 };
 
@@ -304,107 +308,98 @@ export type LocationPin = {
 
 export type LocationResult = {
   __typename?: 'LocationResult';
-  uuid: Scalars['String'];
-  level: Scalars['Int'];
-  text: Scalars['String'];
   fulltext: Scalars['String'];
-  level0Uuid: Scalars['String'];
+  level: Scalars['Int'];
   level0Name: Scalars['String'];
-  level1Uuid: Scalars['String'];
+  level0Uuid: Scalars['String'];
   level1Name: Scalars['String'];
-  level2Uuid: Scalars['String'];
+  level1Uuid: Scalars['String'];
   level2Name: Scalars['String'];
-  level3Uuid: Scalars['String'];
+  level2Uuid: Scalars['String'];
   level3Name: Scalars['String'];
-  level4Uuid: Scalars['String'];
+  level3Uuid: Scalars['String'];
   level4Name: Scalars['String'];
-  level5Uuid: Scalars['String'];
+  level4Uuid: Scalars['String'];
   level5Name: Scalars['String'];
-  type: Scalars['Int'];
-  weight: Scalars['Int'];
+  level5Uuid: Scalars['String'];
   name: Scalars['String'];
+  text: Scalars['String'];
+  type: Scalars['Int'];
+  uuid: Scalars['String'];
+  weight: Scalars['Int'];
 };
-
 
 export type Media = {
   __typename?: 'Media';
-  mediaTypeId: Scalars['Int'];
-  mediaType: MediaType;
   count: Scalars['Int'];
   mediaInfo?: Maybe<Array<Maybe<MediaInfo>>>;
+  mediaType: MediaType;
+  mediaTypeId: Scalars['Int'];
 };
 
 export type MediaInfo = {
   __typename?: 'MediaInfo';
-  mediaUrl: Scalars['String'];
-  thumbnailUrl?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   formatUrl?: Maybe<Scalars['String']>;
+  mediaUrl: Scalars['String'];
   order: Scalars['Int'];
+  thumbnailUrl?: Maybe<Scalars['String']>;
   time?: Maybe<Time>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
 };
 
 export enum MediaType {
-  Regular = 'REGULAR',
-  Cover = 'COVER',
-  Background = 'BACKGROUND',
-  Siteplan = 'SITEPLAN',
-  Facility = 'FACILITY',
-  Youtube = 'YOUTUBE',
-  Brochure = 'BROCHURE',
-  Toc = 'TOC',
-  Logo = 'LOGO',
-  Vr360 = 'VR360'
+  Background = `BACKGROUND`,
+  Cover = `COVER`,
+  Regular = `REGULAR`,
+  Facility = `FACILITY`,
+  Siteplan = `SITEPLAN`,
+  Youtube = `YOUTUBE`,
+  Brochure = `BROCHURE`,
+  Toc = `TOC`,
+  Logo = `LOGO`,
+  Vr360 = `VR360`
 }
 
 export type Mutation = {
   __typename?: 'Mutation';
-  nndAruok: Scalars['String'];
+  cancelOtp?: Maybe<CancelOtpResponse>;
   deleteFavorite?: Maybe<DeleteFavoriteResponse>;
   enquire?: Maybe<EnquireResponse>;
-  sendNps?: Maybe<SendNpsResponse>;
+  nndAruok: Scalars['String'];
   requestOtp?: Maybe<RequestOtpResponse>;
-  verifyOtp?: Maybe<VerifyOtpResponse>;
-  cancelOtp?: Maybe<CancelOtpResponse>;
   saveFavorite?: Maybe<SaveFavoriteResponse>;
+  sendNps?: Maybe<SendNpsResponse>;
+  verifyOtp?: Maybe<VerifyOtpResponse>;
 };
-
 
 export type MutationNndAruokArgs = {
   input: Scalars['String'];
 };
 
-
 export type MutationDeleteFavoriteArgs = {
   request?: Maybe<DeleteFavoriteRequest>;
 };
-
 
 export type MutationEnquireArgs = {
   request?: Maybe<EnquiryRequest>;
 };
 
-
 export type MutationSendNpsArgs = {
   request?: Maybe<SendNpsRequest>;
 };
-
 
 export type MutationRequestOtpArgs = {
   request?: Maybe<RequestOtpRequest>;
 };
 
-
 export type MutationVerifyOtpArgs = {
   request?: Maybe<VerifyOtpRequest>;
 };
 
-
 export type MutationCancelOtpArgs = {
   request?: Maybe<CancelOtpRequest>;
 };
-
 
 export type MutationSaveFavoriteArgs = {
   request?: Maybe<SaveFavoriteRequest>;
@@ -412,19 +407,19 @@ export type MutationSaveFavoriteArgs = {
 
 export type Organization = {
   __typename?: 'Organization';
-  uuid: Scalars['String'];
+  contacts?: Maybe<Array<Maybe<ContactInfo>>>;
+  description: Scalars['String'];
+  instanceInfo?: Maybe<InstanceInfo>;
+  medias?: Maybe<Array<Maybe<Media>>>;
   name: Scalars['String'];
   organizationType: Scalars['Int'];
-  description: Scalars['String'];
   originId: Scalars['String'];
+  portalId: Scalars['Int'];
   slug: Scalars['String'];
   status: Scalars['Int'];
-  portalId: Scalars['Int'];
-  medias?: Maybe<Array<Maybe<Media>>>;
-  instanceInfo?: Maybe<InstanceInfo>;
   time?: Maybe<Time>;
-  contacts?: Maybe<Array<Maybe<ContactInfo>>>;
   url?: Maybe<Scalars['String']>;
+  uuid: Scalars['String'];
 };
 
 export type PaginationRequest = {
@@ -443,133 +438,129 @@ export type PaginationRequestParsed = {
 export type PaginationResponse = {
   __typename?: 'PaginationResponse';
   page: Scalars['Int'];
+  pageCount: Scalars['Int'];
   pageSize: Scalars['Int'];
   totalCount: Scalars['Int'];
-  pageCount: Scalars['Int'];
 };
 
 export type PointOfInterest = {
   __typename?: 'PointOfInterest';
-  name: Scalars['String'];
   distance: Scalars['String'];
+  name: Scalars['String'];
   poiCategoryName: Scalars['String'];
 };
 
 export type Price = {
   __typename?: 'Price';
-  minValue?: Maybe<Scalars['Float']>;
-  maxValue?: Maybe<Scalars['Float']>;
   currencyType: Scalars['Int'];
   display: Scalars['String'];
+  maxValue?: Maybe<Scalars['Float']>;
+  minValue?: Maybe<Scalars['Float']>;
   offer: Scalars['Float'];
-  unitType: Scalars['Int'];
   subDisplay?: Maybe<Scalars['String']>;
+  unitType: Scalars['Int'];
 };
 
 export type PrimaryProject = {
   __typename?: 'PrimaryProject';
-  uniqueFeatures?: Maybe<Array<Maybe<UniqueFeature>>>;
-  subUnits?: Maybe<Array<Maybe<SubUnit>>>;
-  promotion?: Maybe<Scalars['String']>;
-  pointsOfInterest?: Maybe<Array<Maybe<PointOfInterest>>>;
   articles?: Maybe<Array<Maybe<Article>>>;
   keyPoints?: Maybe<Array<Maybe<KeyPoint>>>;
+  pointsOfInterest?: Maybe<Array<Maybe<PointOfInterest>>>;
   projectPropertyTypes?: Maybe<Array<Maybe<FormattedValue>>>;
+  promotion?: Maybe<Scalars['String']>;
+  subUnits?: Maybe<Array<Maybe<SubUnit>>>;
+  uniqueFeatures?: Maybe<Array<Maybe<UniqueFeature>>>;
 };
 
 export type Property = {
   __typename?: 'Property';
-  uuid: Scalars['String'];
-  attributes?: Maybe<PropertyAttributes>;
-  agent?: Maybe<User>;
-  description: Scalars['String'];
   additionalAddress: Scalars['String'];
+  agent?: Maybe<User>;
+  attributes?: Maybe<PropertyAttributes>;
+  description: Scalars['String'];
+  installment?: Maybe<FormattedValue>;
   instanceInfo?: Maybe<InstanceInfo>;
   location: Location;
   locationPin?: Maybe<LocationPin>;
+  medias?: Maybe<Array<Maybe<Media>>>;
   originId?: Maybe<FormattedValue>;
   portalId: Scalars['Int'];
-  propertyType: FormattedValue;
-  priceType: FormattedValue;
   price: Price;
-  installment?: Maybe<FormattedValue>;
+  priceType: FormattedValue;
+  primaryProject?: Maybe<PrimaryProject>;
+  propertyType: FormattedValue;
   rentType: Scalars['Int'];
-  subscriptionTypeId: Scalars['Int'];
-  subscriptionTierId: Scalars['Int'];
-  subtitle: Scalars['String'];
   slug: Scalars['String'];
+  specialFlag?: Maybe<SpecialFlag>;
+  subscriptionTierId: Scalars['Int'];
+  subscriptionTypeId: Scalars['Int'];
+  subtitle: Scalars['String'];
   time: Time;
   title: Scalars['String'];
-  medias?: Maybe<Array<Maybe<Media>>>;
-  primaryProject?: Maybe<PrimaryProject>;
-  specialFlag?: Maybe<SpecialFlag>;
   url?: Maybe<Scalars['String']>;
+  uuid: Scalars['String'];
 };
 
 export type PropertyAttributes = {
   __typename?: 'PropertyAttributes';
-  bedrooms?: Maybe<FormattedValue>;
-  bathrooms?: Maybe<FormattedValue>;
-  landSize?: Maybe<FormattedValue>;
-  buildingSize?: Maybe<FormattedValue>;
-  garages?: Maybe<FormattedValue>;
-  carports?: Maybe<FormattedValue>;
-  electricity?: Maybe<FormattedValue>;
-  floors?: Maybe<FormattedValue>;
-  certification?: Maybe<FormattedValue>;
-  conditions?: Maybe<FormattedValue>;
-  facilities?: Maybe<FormattedValue>;
-  furnishing?: Maybe<FormattedValue>;
-  buildingYear?: Maybe<FormattedValue>;
-  maidBedrooms?: Maybe<FormattedValue>;
-  maidBathrooms?: Maybe<FormattedValue>;
-  phoneLines?: Maybe<FormattedValue>;
-  sizeUnit?: Maybe<FormattedValue>;
-  storey?: Maybe<FormattedValue>;
-  views?: Maybe<FormattedValue>;
-  buildingAge?: Maybe<FormattedValue>;
-  buildingName?: Maybe<FormattedValue>;
-  buildingOrientation?: Maybe<FormattedValue>;
-  maintenanceFee?: Maybe<FormattedValue>;
-  totalUnits?: Maybe<FormattedValue>;
-  bathroomsMax?: Maybe<FormattedValue>;
-  bathroomsMin?: Maybe<FormattedValue>;
-  bedroomsMax?: Maybe<FormattedValue>;
-  bedroomsMin?: Maybe<FormattedValue>;
-  buildingSizeMax?: Maybe<FormattedValue>;
-  buildingSizeMin?: Maybe<FormattedValue>;
-  completionDate?: Maybe<FormattedValue>;
-  landSizeMax?: Maybe<FormattedValue>;
-  landSizeMin?: Maybe<FormattedValue>;
   airConDesc?: Maybe<FormattedValue>;
   amenity?: Maybe<FormattedValue>;
   appoint?: Maybe<FormattedValue>;
-  askingPrice?: Maybe<FormattedValue>;
   askingPSF?: Maybe<FormattedValue>;
+  askingPrice?: Maybe<FormattedValue>;
   attachbath?: Maybe<FormattedValue>;
   avail?: Maybe<FormattedValue>;
+  bathrooms?: Maybe<FormattedValue>;
+  bathroomsMax?: Maybe<FormattedValue>;
+  bathroomsMin?: Maybe<FormattedValue>;
+  bedrooms?: Maybe<FormattedValue>;
+  bedroomsMax?: Maybe<FormattedValue>;
+  bedroomsMin?: Maybe<FormattedValue>;
   block?: Maybe<FormattedValue>;
+  buildingAge?: Maybe<FormattedValue>;
+  buildingName?: Maybe<FormattedValue>;
+  buildingOrientation?: Maybe<FormattedValue>;
+  buildingSize?: Maybe<FormattedValue>;
+  buildingSizeMax?: Maybe<FormattedValue>;
+  buildingSizeMin?: Maybe<FormattedValue>;
+  buildingYear?: Maybe<FormattedValue>;
   carParkType?: Maybe<FormattedValue>;
+  carports?: Maybe<FormattedValue>;
+  certification?: Maybe<FormattedValue>;
   code?: Maybe<FormattedValue>;
+  completionDate?: Maybe<FormattedValue>;
+  conditions?: Maybe<FormattedValue>;
   country?: Maybe<FormattedValue>;
   districtCode?: Maybe<FormattedValue>;
   districtName?: Maybe<FormattedValue>;
+  electricity?: Maybe<FormattedValue>;
   estate?: Maybe<FormattedValue>;
   expire?: Maybe<FormattedValue>;
+  facilities?: Maybe<FormattedValue>;
   family?: Maybe<FormattedValue>;
   fixtures?: Maybe<FormattedValue>;
   fixtures2?: Maybe<FormattedValue>;
+  floors?: Maybe<FormattedValue>;
+  furnishing?: Maybe<FormattedValue>;
+  garages?: Maybe<FormattedValue>;
   guests?: Maybe<FormattedValue>;
   isPremium?: Maybe<FormattedValue>;
   isRent?: Maybe<FormattedValue>;
   isSale?: Maybe<FormattedValue>;
+  landSize?: Maybe<FormattedValue>;
+  landSizeMax?: Maybe<FormattedValue>;
+  landSizeMin?: Maybe<FormattedValue>;
   landSizePSF?: Maybe<FormattedValue>;
   lang?: Maybe<FormattedValue>;
   layDesc?: Maybe<FormattedValue>;
   level?: Maybe<FormattedValue>;
   listingPhoto?: Maybe<FormattedValue>;
+  maidBathrooms?: Maybe<FormattedValue>;
+  maidBedrooms?: Maybe<FormattedValue>;
   maintain?: Maybe<FormattedValue>;
+  maintenanceFee?: Maybe<FormattedValue>;
   panolehURL?: Maybe<FormattedValue>;
+  phoneLines?: Maybe<FormattedValue>;
   phoneOff?: Maybe<FormattedValue>;
   postalCode?: Maybe<FormattedValue>;
   postedDate?: Maybe<FormattedValue>;
@@ -578,116 +569,108 @@ export type PropertyAttributes = {
   propertyTypeCode?: Maybe<FormattedValue>;
   propertyTypeDesc?: Maybe<FormattedValue>;
   remarks?: Maybe<FormattedValue>;
-  rentalPrice?: Maybe<FormattedValue>;
   rentalPSF?: Maybe<FormattedValue>;
+  rentalPrice?: Maybe<FormattedValue>;
   sizeMeasureCode?: Maybe<FormattedValue>;
+  sizeUnit?: Maybe<FormattedValue>;
   source?: Maybe<FormattedValue>;
   status?: Maybe<FormattedValue>;
+  storey?: Maybe<FormattedValue>;
   street?: Maybe<FormattedValue>;
   temporaryOccupationPermit?: Maybe<FormattedValue>;
   tenureDesc?: Maybe<FormattedValue>;
   tenureID?: Maybe<FormattedValue>;
+  totalUnits?: Maybe<FormattedValue>;
   unit?: Maybe<FormattedValue>;
   utilities?: Maybe<FormattedValue>;
+  views?: Maybe<FormattedValue>;
   youtubeID?: Maybe<FormattedValue>;
 };
 
 export enum PropertySearchSort {
-  Default = 'DEFAULT',
-  Rank = 'RANK',
-  Newest = 'NEWEST',
-  PriceAsc = 'PRICE_ASC',
-  PriceDesc = 'PRICE_DESC'
+  Default = `DEFAULT`,
+  Newest = `NEWEST`,
+  Rank = `RANK`,
+  PriceAsc = `PRICE_ASC`,
+  PriceDesc = `PRICE_DESC`
 }
 
 export type Query = {
-  __typename?: 'Query';
-  nndAruok: Scalars['String'];
+  FindPropertiesByFilters?: Maybe<FindPropertiesByFiltersResponse>;
+  GetFavoriteProperties?: Maybe<GetFavoritePropertiesResponse>;
   GetFooter?: Maybe<GetFooterResponse>;
   GetProperty?: Maybe<GetPropertyResponse>;
   GetPropertyByOriginID?: Maybe<GetPropertyByOriginIdResponse>;
-  FindPropertiesByFilters?: Maybe<FindPropertiesByFiltersResponse>;
-  GetFavoriteProperties?: Maybe<GetFavoritePropertiesResponse>;
   GetSearchSuggestionByLocationUUIDs?: Maybe<SearchSuggestionResponse>;
   GetSearchSuggestionByQuery?: Maybe<SearchSuggestionByQueryResponse>;
+  GetSearchSuggestionDeveloperByOriginID?: Maybe<SearchSuggestionByQueryResponse>;
   GetSearchSuggestionLocationByURL?: Maybe<SearchSuggestionByQueryResponse>;
   GetSearchSuggestionLocationByUUIDs?: Maybe<SearchSuggestionByQueryResponse>;
-  GetSearchSuggestionDeveloperByOriginID?: Maybe<SearchSuggestionByQueryResponse>;
   GetVersion?: Maybe<VersionResponse>;
+  __typename?: 'Query';
+  nndAruok: Scalars['String'];
 };
-
 
 export type QueryNndAruokArgs = {
   input: Scalars['String'];
   limit: Scalars['Int'];
 };
 
-
 export type QueryGetFooterArgs = {
   request?: Maybe<GetFooterRequest>;
 };
-
 
 export type QueryGetPropertyArgs = {
   request?: Maybe<GetPropertyRequest>;
 };
 
-
 export type QueryGetPropertyByOriginIdArgs = {
   request?: Maybe<GetPropertyByOriginIdRequest>;
 };
-
 
 export type QueryFindPropertiesByFiltersArgs = {
   request?: Maybe<FindPropertiesByFiltersRequest>;
 };
 
-
 export type QueryGetFavoritePropertiesArgs = {
   request?: Maybe<GetFavoritePropertiesRequest>;
 };
-
 
 export type QueryGetSearchSuggestionByLocationUuiDsArgs = {
   request?: Maybe<SearchSuggestionLocationRequest>;
 };
 
-
 export type QueryGetSearchSuggestionByQueryArgs = {
   request?: Maybe<SearchSuggestionQueryRequest>;
 };
-
 
 export type QueryGetSearchSuggestionLocationByUrlArgs = {
   request?: Maybe<SearchSuggestionUrlRequest>;
 };
 
-
 export type QueryGetSearchSuggestionLocationByUuiDsArgs = {
   request?: Maybe<SearchSuggestionLocationRequest>;
 };
 
-
 export type QueryGetSearchSuggestionDeveloperByOriginIdArgs = {
   request?: Maybe<SearchSuggestionOriginIdRequest>;
 };
-
 
 export type QueryGetVersionArgs = {
   request?: Maybe<VersionRequest>;
 };
 
 export type RequestOtpRequest = {
+  cancelledRequestId?: Maybe<Scalars['String']>;
   phoneNumber: Scalars['String'];
   portalId: Scalars['Int'];
-  cancelledRequestId?: Maybe<Scalars['String']>;
 };
 
 export type RequestOtpResponse = {
   __typename?: 'RequestOtpResponse';
-  requestId: Scalars['String'];
-  pinExpiry: Scalars['Int'];
   nextEventWait: Scalars['Int'];
+  pinExpiry: Scalars['Int'];
+  requestId: Scalars['String'];
 };
 
 export type SaveFavoriteRequest = {
@@ -696,9 +679,9 @@ export type SaveFavoriteRequest = {
 
 export type SaveFavoriteResponse = {
   __typename?: 'SaveFavoriteResponse';
+  isSuccess?: Maybe<Scalars['Boolean']>;
   statusCode?: Maybe<Scalars['Int']>;
   statusMessage?: Maybe<Scalars['String']>;
-  isSuccess?: Maybe<Scalars['Boolean']>;
 };
 
 export type SearchSuggestionByQueryResponse = {
@@ -707,22 +690,22 @@ export type SearchSuggestionByQueryResponse = {
 };
 
 export type SearchSuggestionLocationRequest = {
-  uuids?: Maybe<Array<Scalars['String']>>;
-  portalId?: Maybe<Scalars['Int']>;
   countryId?: Maybe<Scalars['String']>;
+  portalId?: Maybe<Scalars['Int']>;
+  uuids?: Maybe<Array<Scalars['String']>>;
 };
 
 export type SearchSuggestionOriginIdRequest = {
+  countryId?: Maybe<Scalars['String']>;
   originID: Scalars['String'];
   portalId?: Maybe<Scalars['Int']>;
-  countryId?: Maybe<Scalars['String']>;
 };
 
 export type SearchSuggestionQueryRequest = {
-  query: Scalars['String'];
-  subChannel?: Maybe<EnumSubChannel>;
   countryId?: Maybe<Scalars['String']>;
   portalId?: Maybe<Scalars['Int']>;
+  query: Scalars['String'];
+  subChannel?: Maybe<EnumSubChannel>;
 };
 
 export type SearchSuggestionResponse = {
@@ -731,16 +714,16 @@ export type SearchSuggestionResponse = {
 };
 
 export type SearchSuggestionUrlRequest = {
-  urls?: Maybe<Array<Scalars['String']>>;
-  portalId?: Maybe<Scalars['Int']>;
   countryId?: Maybe<Scalars['String']>;
+  portalId?: Maybe<Scalars['Int']>;
+  urls?: Maybe<Array<Scalars['String']>>;
 };
 
 export type SendNpsRequest = {
-  npsCategoryId: Scalars['String'];
-  score: Scalars['Int'];
   comment?: Maybe<Scalars['String']>;
   metadata?: Maybe<Scalars['String']>;
+  npsCategoryId: Scalars['String'];
+  score: Scalars['Int'];
 };
 
 export type SendNpsResponse = {
@@ -752,10 +735,10 @@ export type SendNpsResponse = {
 
 export type SpecialFlag = {
   __typename?: 'SpecialFlag';
-  isVerified: Scalars['Boolean'];
+  isFavorite: Scalars['Boolean'];
   isNpl: Scalars['Boolean'];
   isPrimaryProject: Scalars['Boolean'];
-  isFavorite: Scalars['Boolean'];
+  isVerified: Scalars['Boolean'];
 };
 
 export type SubUnit = {
@@ -766,45 +749,45 @@ export type SubUnit = {
 
 export type SubscriptionProperty = {
   __typename?: 'SubscriptionProperty';
-  uuid: Scalars['String'];
   parentSubscription?: Maybe<Scalars['String']>;
-  subscriptionTierId: Scalars['Int'];
-  status: Scalars['Int'];
   propertyUuid: Scalars['String'];
+  status: Scalars['Int'];
+  subscriptionTierId: Scalars['Int'];
+  time?: Maybe<Time>;
   usageCounter?: Maybe<Scalars['Int']>;
   usageQuota?: Maybe<Scalars['Int']>;
-  time?: Maybe<Time>;
+  uuid: Scalars['String'];
 };
 
 export enum SuggestionKind {
-  Location = 'LOCATION',
-  Property = 'PROPERTY',
-  Developer = 'DEVELOPER'
+  Developer = `DEVELOPER`,
+  Location = `LOCATION`,
+  Property = `PROPERTY`
 }
 
 export type SuggestionResult = {
   __typename?: 'SuggestionResult';
-  uuid: Scalars['String'];
-  kind: SuggestionKind;
-  label: Scalars['String'];
-  originId?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
-  subTitle: Scalars['String'];
-  weight?: Maybe<Scalars['Int']>;
-  url?: Maybe<Scalars['String']>;
-  level?: Maybe<Scalars['Int']>;
-  province?: Maybe<Basic>;
+  building?: Maybe<Basic>;
   city?: Maybe<Basic>;
   district?: Maybe<Basic>;
-  propertyType?: Maybe<Scalars['Int']>;
-  portalId: Scalars['Int'];
-  locationType?: Maybe<Scalars['Int']>;
   estate?: Maybe<Basic>;
-  street?: Maybe<Basic>;
-  building?: Maybe<Basic>;
+  kind: SuggestionKind;
+  label: Scalars['String'];
+  level?: Maybe<Scalars['Int']>;
+  locationType?: Maybe<Scalars['Int']>;
+  originId?: Maybe<Scalars['String']>;
+  portalId: Scalars['Int'];
   postalCode?: Maybe<Basic>;
+  propertyType?: Maybe<Scalars['Int']>;
+  province?: Maybe<Basic>;
+  street?: Maybe<Basic>;
+  subTitle: Scalars['String'];
+  text?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
+  uuid: Scalars['String'];
   village?: Maybe<Basic>;
+  weight?: Maybe<Scalars['Int']>;
 };
 
 export type Time = {
@@ -818,32 +801,32 @@ export type Time = {
 
 export type UniqueFeature = {
   __typename?: 'UniqueFeature';
-  featureTitle: Scalars['String'];
   featureDescription: Scalars['String'];
   featureImageUrl: Scalars['String'];
+  featureTitle: Scalars['String'];
 };
 
 export type User = {
   __typename?: 'User';
-  uuid: Scalars['String'];
-  name: Scalars['String'];
   alias: Scalars['String'];
-  userType: Scalars['Int'];
-  portalId: Scalars['Int'];
-  originId: Scalars['String'];
-  username: Scalars['String'];
+  contacts?: Maybe<Array<Maybe<ContactInfo>>>;
   instanceInfo?: Maybe<InstanceInfo>;
   medias?: Maybe<Array<Maybe<Media>>>;
-  time?: Maybe<Time>;
-  contacts?: Maybe<Array<Maybe<ContactInfo>>>;
+  name: Scalars['String'];
   organization?: Maybe<Organization>;
-  url?: Maybe<Scalars['String']>;
+  originId: Scalars['String'];
+  portalId: Scalars['Int'];
+  time?: Maybe<Time>;
   totalListing?: Maybe<Scalars['Int']>;
+  url?: Maybe<Scalars['String']>;
+  userType: Scalars['Int'];
+  username: Scalars['String'];
+  uuid: Scalars['String'];
 };
 
 export type VerifyOtpRequest = {
-  requestId: Scalars['String'];
   code: Scalars['String'];
+  requestId: Scalars['String'];
 };
 
 export type VerifyOtpResponse = {
@@ -859,8 +842,8 @@ export type VersionRequest = {
 
 export type VersionResponse = {
   __typename?: 'VersionResponse';
+  isForceUpdate: Scalars['Boolean'];
   platform: Scalars['String'];
   portalId: Scalars['Int'];
   version: Scalars['String'];
-  isForceUpdate: Scalars['Boolean'];
 };
