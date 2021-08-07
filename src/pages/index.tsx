@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { gql } from "@apollo/client";
 
-import client from '../apollo/apollo-client'
+import client from '@/common/modules/apollo/apollo-client'
 
-import styles from '../styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 
 export default function Home() {
 
