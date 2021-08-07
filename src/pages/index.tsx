@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { gql } from "@apollo/client";
 
-import client from '@/common/modules/apollo/apollo-client'
+import client from '@/modules/apollo/apollo-client'
 
 import styles from '@/styles/Home.module.css'
 
@@ -96,7 +96,7 @@ export async function getServerSideProps() {
         `,
       });
       console.debug( '====CEK SINI BOS', data);
-    
+
       return {
         props: {
             data
