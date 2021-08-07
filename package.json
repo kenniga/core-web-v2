@@ -6,7 +6,8 @@
     "generate-contract": "graphql-codegen",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='-r next-logger' next start",
+    "start:simulate": "NODE_OPTIONS='-r next-logger' next start | pino-pretty",
     "lint": "next lint"
   },
   "husky": {
@@ -44,6 +45,7 @@
     "git-cz": "4.7.6",
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
+    "next-logger": "^2.1.0",
     "typescript": "^4.3.5"
   }
 }
