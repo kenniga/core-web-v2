@@ -16,3 +16,22 @@ export const getLocalesJSON = (
 
   return import(`@/modules/i18n/locales/en.json`).then((item) => item.default);
 };
+
+/**
+ * Generate Locales Fron Props
+ * @param {string} locales - locales string from props
+ * @returns {Ii18nLocales}
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.08.08
+ */
+export const getLocalesFromProps = (locales: string): Ii18nLocales => {
+  switch (locales) {
+    case `id`:
+      return `id`;
+
+    case `en`:
+      return `en`;
+  }
+
+  return `id`;
+};

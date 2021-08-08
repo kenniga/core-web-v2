@@ -1,10 +1,16 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
-import { EnumFooterPage, EnumPriceType } from '@/contract-gql';
+import {
+  EnumFooterPage,
+  EnumPriceType,
+  GetFooterRequest
+} from '@/contract-gql';
 import { getInitialFooter } from '@/features/footer/helper';
-import { IBasicServiceProps } from '@/interface/service';
 import { GqlClient } from '@/modules/apollo/helper';
+import { getLocalesFromProps } from '@/modules/i18n/helper';
+import { HOMEPAGE_PROPS_NAME } from '@/services/homepage/constant';
+import { IHomepageInitialProps } from '@/services/homepage/interface';
 
 /**
  * Get Basic Homepage Props
@@ -14,11 +20,57 @@ import { GqlClient } from '@/modules/apollo/helper';
 export const getBasicHomepageProps = ({
   locale,
   req
-}: GetServerSidePropsContext<ParsedUrlQuery>): IBasicServiceProps => {
+}: GetServerSidePropsContext<ParsedUrlQuery>): IHomepageInitialProps => {
   return {
-    language: locale === `id` ? `id` : `en`,
-    page: req.url,
-    tracker: []
+    [HOMEPAGE_PROPS_NAME]: {
+      language: getLocalesFromProps(locale),
+      page: req.url,
+      tracker: [],
+      type: `sale`
+    }
+  };
+};
+
+/**
+ * Generate Footer Parameter Helper
+ * @param {IHomepageInitialProps} initialProps - initial props homepage
+ * @returns {GetFooterRequest}
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.08.08
+ */
+const generateFooterParameter = ({
+  homepage: { type }
+}: IHomepageInitialProps): GetFooterRequest => {
+  let page: EnumFooterPage = EnumFooterPage.Homepage;
+  let priceType: EnumPriceType = EnumPriceType.Sale;
+  switch (type) {
+    case `sale`: {
+      page = EnumFooterPage.Homepage;
+      priceType = EnumPriceType.Sale;
+      break;
+    }
+
+    case `rent`: {
+      page = EnumFooterPage.Homepage;
+      priceType = EnumPriceType.Rent;
+      break;
+    }
+
+    case `new-launch`: {
+      page = EnumFooterPage.Newlaunch;
+      priceType = EnumPriceType.Sale;
+      break;
+    }
+
+    default:
+      break;
+  }
+
+  return {
+    page,
+    priceType,
+    propertyType: 0,
+    uuids: []
   };
 };
 
@@ -30,17 +82,16 @@ export const getBasicHomepageProps = ({
  * @since 2021.08.08
  */
 export const getSSRHomepageProps: GetServerSideProps = async (props) => {
-  const { data: footerInitialProps } = await getInitialFooter({
-    page: EnumFooterPage.Homepage,
-    priceType: EnumPriceType.Sale,
-    propertyType: 0,
-    uuids: []
-  });
+  const homePageInitialProps = getBasicHomepageProps(props);
+  const { data: footerInitialProps } = await getInitialFooter(
+    generateFooterParameter(homePageInitialProps),
+    getLocalesFromProps(props.locale)
+  );
 
   return {
     props: {
+      ...homePageInitialProps,
       ...footerInitialProps,
-      homepage: getBasicHomepageProps(props),
       initialApolloState: GqlClient.singleton().cache.extract()
     }
   };

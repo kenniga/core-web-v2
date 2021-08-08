@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import Link from 'next/link';
+import { FC, Fragment } from 'react';
 
 import { useFooterContext } from '@/features/footer/hooks/footer.hooks';
 
@@ -12,8 +13,15 @@ const Footer: FC = () => {
 
   return (
     <div>
-      {state.footer.map(({ title }) => (
-        <div key={title}>{title}</div>
+      {state.footer.map(({ item, title }) => (
+        <Fragment key={title}>
+          <div>{title}</div>
+          {item.map(({ subtitle, url }) => (
+            <Link href={url} key={url}>
+              {subtitle}
+            </Link>
+          ))}
+        </Fragment>
       ))}
     </div>
   );

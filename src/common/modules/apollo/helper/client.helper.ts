@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import { NullAble } from '@/interface/general';
 import { IApolloConnection } from '@/modules/apollo/interface';
+import { Ii18nLocales } from '@/modules/i18n/interface';
 
 /**
  * Gql Client Singleton
@@ -10,13 +11,15 @@ import { IApolloConnection } from '@/modules/apollo/interface';
  * @since 2021.08.07
  */
 export class GqlClient {
-  private static instance: NullAble<IApolloConnection>;
+  private static instanceID: NullAble<IApolloConnection>;
+
+  private static instanceEN: NullAble<IApolloConnection>;
 
   /**
    * Execute Generate Apollo Connection
    * @returns {IApolloConnection}
    */
-  execute(): IApolloConnection {
+  execute(language: Ii18nLocales = `id`): IApolloConnection {
     const HTTP_LINK = createHttpLink({
       uri: process.env.NEXT_PUBLIC_GRAPHQL_HOST
     });
@@ -25,7 +28,7 @@ export class GqlClient {
       return {
         headers: {
           ...headers,
-          'Accept-Language': `id`,
+          'Accept-Language': language,
           'Accept-Version': `2.0`,
           'X-Client': process.env.NEXT_PUBLIC_X_CLIENT,
           authorization: 0
@@ -44,12 +47,24 @@ export class GqlClient {
    * Singleton
    * @returns {NullAble<IApolloConnection>}
    */
-  public static singleton(): IApolloConnection {
-    if (GqlClient.instance === undefined) {
-      GqlClient.instance = new GqlClient().execute();
-    }
+  public static singleton(language: Ii18nLocales = `id`): IApolloConnection {
+    switch (language) {
+      case `id`: {
+        if (GqlClient.instanceID === undefined) {
+          GqlClient.instanceID = new GqlClient().execute();
+        }
 
-    return GqlClient.instance;
+        return GqlClient.instanceID;
+      }
+
+      case `en`: {
+        if (GqlClient.instanceEN === undefined) {
+          GqlClient.instanceEN = new GqlClient().execute(`en`);
+        }
+
+        return GqlClient.instanceEN;
+      }
+    }
   }
 }
 
@@ -61,9 +76,10 @@ export class GqlClient {
  * @since 2021.08.07
  */
 export const initializeApollo = (
-  initialState: Record<string, any> | null = null
+  initialState: Record<string, any> | null = null,
+  language: Ii18nLocales = `id`
 ): IApolloConnection => {
-  const client = GqlClient.singleton();
+  const client = GqlClient.singleton(language);
 
   if (initialState) {
     const existingCache = client.extract();

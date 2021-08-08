@@ -8,12 +8,13 @@ import { useI18n } from '@/modules/i18n/hooks/i18n.hooks';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.08
  */
-const HomepageView: FC = (props: any) => {
+const HomepageView: FC<Record<string, any>> = (props) => {
   const { t } = useI18n();
+
   return (
     <div>
       {t(`greet`)}
-      <FooterFeatures {...props} />
+      <FooterFeatures footer={props.footer} />
     </div>
   );
 };
