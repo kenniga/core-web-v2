@@ -3,6 +3,7 @@ import { AppType } from 'next/dist/next-server/lib/utils';
 
 import '@/styles/globals.css';
 import { useApollo } from '@/modules/apollo/hooks/apollo.hooks';
+import { withI18n } from '@/modules/i18n/hoc';
 
 /**
  * App Instance
@@ -18,4 +19,4 @@ const App: AppType = ({ Component, pageProps }) => {
   );
 };
 
-export default App;
+export default withI18n(App);
