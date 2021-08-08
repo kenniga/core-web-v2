@@ -1,11 +1,21 @@
-import '../styles/globals.css';
+import { ApolloProvider } from '@apollo/client';
+import { AppType } from 'next/dist/next-server/lib/utils';
+
+import '@/styles/globals.css';
+import { useApollo } from '@/modules/apollo/hooks/apollo.hooks';
 
 /**
- *
- * @param param0
+ * App Instance
+ * @returns {ReactNode}
  */
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+const App: AppType = ({ Component, pageProps }) => {
+  const apolloClient = useApollo(pageProps.initialApolloState);
 
-export default MyApp;
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  );
+};
+
+export default App;

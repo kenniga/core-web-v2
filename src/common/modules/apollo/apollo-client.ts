@@ -11,10 +11,8 @@ const authLink = setContext((_, { headers }) => ({
     'Accept-Language': `id`,
     // TODO: Accept-Version temp added for performance testing
     'Accept-Version': `2.0`,
-
     // TODO: waiting backend team create dynamic token for gql auth
     'X-Client': `Y29yZS1jbGllbnQtZm9yLXdlYgo=`,
-
     authorization: 0
   }
 }));
