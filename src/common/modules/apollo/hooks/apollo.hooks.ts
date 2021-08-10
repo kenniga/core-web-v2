@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import { initializeApollo } from '@/modules/apollo/helper';
 import { IApolloConnection } from '@/modules/apollo/interface';
+import { Ii18nLocales } from '@/modules/i18n/interface';
 
 /**
  * Apollo Get Connection Hooks
@@ -11,9 +12,13 @@ import { IApolloConnection } from '@/modules/apollo/interface';
  * @since 2021.08.07
  */
 export const useApollo = (
-  initialState: Record<string, any> | null
+  initialState: Record<string, any> | null,
+  language: Ii18nLocales = `id`
 ): IApolloConnection => {
-  const store = useMemo(() => initializeApollo(initialState), [initialState]);
+  const store = useMemo(
+    () => initializeApollo(initialState, language),
+    [initialState, language]
+  );
 
   return store;
 };

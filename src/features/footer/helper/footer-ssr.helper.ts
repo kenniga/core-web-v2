@@ -3,7 +3,7 @@ import { IFooterInitialProps } from '@/features/footer/interface';
 import { FOOTER_QUERY } from '@/features/footer/query';
 import { GenResponse, PickGql } from '@/interface/graphql';
 import { GqlClient } from '@/modules/apollo/helper';
-import { IApolloConnection } from '@/modules/apollo/interface';
+import { Ii18nLocales } from '@/modules/i18n/interface';
 
 import { translateFooter } from './footer-adapter.helper';
 
@@ -18,14 +18,19 @@ type response = GenResponse<IFooterInitialProps>;
  */
 export const getInitialFooter = async (
   parameter: GetFooterRequest,
-  client: IApolloConnection = GqlClient.singleton()
+  language: Ii18nLocales = `en`
 ): Promise<response> => {
   try {
     const { page, portalId, priceType, propertyType, uuids } = parameter;
-    const { data, error } = await client.query<
+    const { data, error } = await GqlClient.singleton(language).query<
       PickGql<'GetFooter'>,
       QueryGetFooterArgs
     >({
+      context: {
+        headers: {
+          language
+        }
+      },
       query: FOOTER_QUERY,
       variables: {
         request: {
@@ -39,7 +44,6 @@ export const getInitialFooter = async (
     });
 
     return {
-      client,
       data: {
         footer: {
           parameter,
@@ -51,7 +55,6 @@ export const getInitialFooter = async (
   } catch (e) {
     // TODO: please add logging step on the future
     return {
-      client,
       data: undefined,
       error: e
     };

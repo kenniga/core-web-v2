@@ -2,6 +2,7 @@ import { ApolloError, useQuery } from '@apollo/client';
 import { useCallback, useContext, useReducer, useRef } from 'react';
 
 import { GetFooterRequest, QueryGetFooterArgs } from '@/contract-gql';
+import FooterContext from '@/features/footer/context';
 import { translateFooter } from '@/features/footer/helper';
 import {
   IFooter,
@@ -14,8 +15,6 @@ import { FOOTER_QUERY } from '@/features/footer/query';
 import { FooterReducer } from '@/features/footer/reducers';
 import { NullAble } from '@/interface/general';
 import { PickGql } from '@/interface/graphql';
-
-import FooterContext from '../context';
 
 /**
  * Footer Hooks
