@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "baseUrl": "./",
+      "paths": {
+        "@/constant/*": ["src/common/constant/*"],
+        "@/helper/*": ["src/common/helper/*"],
+        "@/interface/*": ["src/common/interface/*"],
+        "@/modules/*": ["src/common/modules/*"],
+        "@/contract-gql": ["src/generated/graphql/index.ts"],
+        "@/contract-rest": ["src/generated/rest/index.ts"],
+        "@/*": ["src/*"]
+      }
+    }
+  }

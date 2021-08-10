@@ -20,7 +20,7 @@ setup-env-dev: cleansing-env
 	@cp env/local/.env .env.local
 
 run-dev: setup-env-dev
-	@yarn start
+	@yarn dev
 
 
 ###########################################################################
