@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { IMixin } from '@/styled-component/interface';
 
 import { MARGIN_KEY } from './constant';
-import { IBaseMarginMixin, IMarginMixin } from './interface';
+import { IMarginMixin } from './interface';
 
 /**
  * Margin Mixin
@@ -33,42 +33,42 @@ export const margin: IMixin<IMarginMixin> = ({ direction, value }) => {
 
 /**
  * Margin Left
- * @param {IBaseMarginMixin} props - margin base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/margin/interface/index.ts`
+ * @param {number} value - margin left value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const marginLeft: IMixin<IBaseMarginMixin> = ({ value }) =>
+export const marginLeft: IMixin<number> = (value) =>
   margin({ direction: `left`, value });
 
 /**
  * Margin Right
- * @param {IBaseMarginMixin} props - margin base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/margin/interface/index.ts`
+ * @param {number} value - margin right value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const marginRight: IMixin<IBaseMarginMixin> = ({ value }) =>
+export const marginRight: IMixin<number> = (value) =>
   margin({ direction: `right`, value });
 
 /**
  * Margin Top
- * @param {IBaseMarginMixin} props - margin base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/margin/interface/index.ts`
+ * @param {number} value - margin top value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const marginTop: IMixin<IBaseMarginMixin> = ({ value }) =>
+export const marginTop: IMixin<number> = (value) =>
   margin({ direction: `top`, value });
 
 /**
  * Margin Bottom
- * @param {IBaseMarginMixin} props - margin base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/margin/interface/index.ts`
+ * @param {number} value - margin bottom value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const marginBottom: IMixin<IBaseMarginMixin> = ({ value }) =>
+export const marginBottom: IMixin<number> = (value) =>
   margin({ direction: `top`, value });
 
 /**

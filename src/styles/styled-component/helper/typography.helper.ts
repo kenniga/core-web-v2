@@ -2,10 +2,12 @@ import { bulkVerifiedIsNotEmpty, verifiedKeyIsExist } from '@99/helper';
 import { ReactText } from 'react';
 
 import {
+  FONT_FACE_GENERAL,
   FONT_SIZE_GENERAL,
   LINE_HEIGHT_GENERAL
 } from '@/styled-component/constant';
 import {
+  IFontFamilyType,
   IFontSizeType,
   ILineHeightType,
   ITextSize
@@ -98,8 +100,32 @@ export const getTextSizeByConstant = (
  */
 export const getTextSize = (
   param: ReactText | ITextSize<ReactText, ReactText>
-): ITextSize<ReactText, ReactText> => {
-  return getTextSizeByConstant(
+): ITextSize<ReactText, ReactText> =>
+  getTextSizeByConstant(
     param as ReactText | ITextSize<IFontSizeType, ILineHeightType>
   );
+
+/**
+ * Get Font Face By Constant
+ * @param {IFontFace} fontName - font name value
+ * @returns {string}
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.08.22
+ */
+export const getFontFaceByConstant = (fontName: IFontFamilyType): string => {
+  if (verifiedKeyIsExist(FONT_FACE_GENERAL, fontName)) {
+    return FONT_FACE_GENERAL[fontName];
+  }
+
+  return fontName;
 };
+
+/**
+ * Get Font Face
+ * @param {string} fontName - font name value
+ * @returns {string}
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.08.22
+ */
+export const getFontFace = (fontName: string): string =>
+  getFontFaceByConstant(fontName as IFontFamilyType);

@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { IMixin } from '@/styled-component/interface';
 
 import { PADDING_KEY } from './constant';
-import { IBasePaddingMixin, IPaddingMixin } from './interface';
+import { IPaddingMixin } from './interface';
 
 /**
  * Padding Mixin
@@ -33,42 +33,42 @@ export const padding: IMixin<IPaddingMixin> = ({ direction, value }) => {
 
 /**
  * Padding Left
- * @param {IBasePaddingMixin} props - padding base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/padding/interface/index.ts`
+ * @param {number} value - padding left value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const paddingLeft: IMixin<IBasePaddingMixin> = ({ value }) =>
+export const paddingLeft: IMixin = ({ value }) =>
   padding({ direction: `left`, value });
 
 /**
  * Padding Right
- * @param {IBasePaddingMixin} props - padding base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/padding/interface/index.ts`
+ * @param {number} value - padding right value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const paddingRight: IMixin<IBasePaddingMixin> = ({ value }) =>
+export const paddingRight: IMixin = ({ value }) =>
   padding({ direction: `right`, value });
 
 /**
  * Padding Top
- * @param {IBasePaddingMixin} props - padding base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/padding/interface/index.ts`
+ * @param {number} value - padding top value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const paddingTop: IMixin<IBasePaddingMixin> = ({ value }) =>
+export const paddingTop: IMixin = ({ value }) =>
   padding({ direction: `top`, value });
 
 /**
  * Padding Bottom
- * @param {IBasePaddingMixin} props - padding base mixin props you can read furthermore on this file `src/styles/styled-component/mixins/padding/interface/index.ts`
+ * @param {number} value - padding bottom value
  * @returns {SerializedStyles}
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.08.22
  */
-export const paddingBottom: IMixin<IBasePaddingMixin> = ({ value }) =>
+export const paddingBottom: IMixin = ({ value }) =>
   padding({ direction: `top`, value });
 
 /**
