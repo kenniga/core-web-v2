@@ -25,7 +25,7 @@
     "simple-import-sort",
     "sort-destructure-keys",
     "sort-keys-fix",
-    "react-hooks"
+    "@emotion"
   ],
   "extends":[
     "next",
@@ -143,7 +143,8 @@
           "MethodDefinition":true
         }
       }
-    ]
+    ],
+    "@emotion/pkg-renaming": "error"
   },
   "overrides":[
     {
