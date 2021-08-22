@@ -9,6 +9,7 @@
         "@/modules/*": ["src/common/modules/*"],
         "@/contract-gql": ["src/generated/graphql/index.ts"],
         "@/contract-rest": ["src/generated/rest/index.ts"],
+        "@/styled-component/*": ["src/styles/styled-component/*"],
         "@/*": ["src/*"]
       }
     }
