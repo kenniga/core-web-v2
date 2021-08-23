@@ -21,6 +21,9 @@ export const getBasicHomepageProps = ({
   locale,
   req
 }: GetServerSidePropsContext<ParsedUrlQuery>): IHomepageInitialProps => {
+  const a = 10 as unknown as string;
+
+  a.toUpperCase();
   return {
     [HOMEPAGE_PROPS_NAME]: {
       language: getLocalesFromProps(locale),

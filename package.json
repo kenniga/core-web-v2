@@ -31,6 +31,7 @@
     "@apollo/react-ssr": "4.0.0",
     "@emotion/react": "11.4.1",
     "@emotion/styled": "11.3.0",
+    "@sentry/nextjs": "6.11.0",
     "cors": "^2.8.5",
     "emotion-rgba": "0.0.9",
     "graphql": "^15.5.1",
@@ -69,6 +70,7 @@
     "husky": "4.3.8",
     "lint-staged": "11.1.2",
     "next-logger": "^2.1.0",
+    "pino-pretty": "6.0.0",
     "prettier": "2.3.2",
     "typescript": "^4.3.5"
   }
