@@ -5,6 +5,7 @@
       "paths": {
         "@/constant/*": ["src/common/constant/*"],
         "@/helper/*": ["src/common/helper/*"],
+        "@/helper": ["src/common/helper/index.ts"],
         "@/interface/*": ["src/common/interface/*"],
         "@/modules/*": ["src/common/modules/*"],
         "@/contract-gql": ["src/generated/graphql/index.ts"],

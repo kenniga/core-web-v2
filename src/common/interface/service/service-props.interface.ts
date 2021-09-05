@@ -1,4 +1,4 @@
-import { Ii18nLocales } from '@/interface/general';
+import { Ii18nLocales } from '@/modules/i18n/interface';
 
 /**
  * Basic Service Props Interface

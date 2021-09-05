@@ -1,4 +1,6 @@
-module.exports = {
+const { withSentryConfig } = require('@sentry/nextjs');
+
+const modules = {
   i18n: {
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
@@ -10,3 +12,9 @@ module.exports = {
   },
   reactStrictMode: true
 };
+
+const sentryConfig = {
+  silent: true
+};
+
+module.exports = withSentryConfig(modules, sentryConfig);
