@@ -2,7 +2,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: `https://release.core.rumah123.com/graphql/query`
+  uri: `https://rumah123portal.release.99iddev.net/graphql/query`
 });
 
 const authLink = setContext((_, { headers }) => ({

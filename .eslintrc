@@ -1,123 +1,99 @@
 {
-  "env":{
-    "browser":true,
-    "es6":true
+  "env": {
+    "browser": true,
+    "es6": true
   },
-  "parserOptions":{
-    "ecmaFeatures":{
-      "jsx":true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "ecmaVersion":2019,
-    "sourceType":"module"
+    "ecmaVersion": 2019,
+    "sourceType": "module"
   },
-  "globals":{
-    "Atomics":"readonly",
-    "SharedArrayBuffer":"readonly",
-    "ResizeObserverCallback":"readonly"
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "ResizeObserverCallback": "readonly"
   },
-  "plugins":[
+  "plugins": [
     "import",
     "jsx-a11y",
     "react",
     "react-hooks",
     "prettier",
-    "require-jsdoc-except",
     "simple-import-sort",
     "sort-destructure-keys",
     "sort-keys-fix",
     "@emotion"
   ],
-  "extends":[
+  "extends": [
     "next",
     "next/core-web-vitals",
     "eslint-config-prettier",
     "prettier"
   ],
-  "rules":{
-    "camelcase":"off",
-    "import/prefer-default-export":"off",
-    "react/prop-types":"off",
-    "react/jsx-key":"error",
-    "react/jsx-filename-extension":"off",
-    "react/jsx-props-no-spreading":"off",
-    "react/no-unused-prop-types":"off",
-    "react/react-in-jsx-scope":"off",
-    "react/require-default-props":"off",
-    "import/extensions":[
+  "rules": {
+    "camelcase": "off",
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off",
+    "react/jsx-key": "error",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unused-prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "ts":"never",
-        "tsx":"never",
-        "js":"never",
-        "jsx":"never"
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
       }
     ],
-    "quotes":"off",
-    "jsx-a11y/anchor-is-valid":[
+    "quotes": "off",
+    "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components":[
-          "Link"
-        ],
-        "specialLink":[
-          "hrefLeft",
-          "hrefRight"
-        ],
-        "aspects":[
-          "invalidHref",
-          "preferButton"
-        ]
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
       }
     ],
-    "default-case":"off",
-    "no-shadow":"off",
-    "import/no-dynamic-require":"off",
-    "react-hooks/rules-of-hooks":"error",
-    "react-hooks/exhaustive-deps":"warn",
-    "global-require":"off",
-    "class-methods-use-this":"off",
-    "prettier/prettier":[
+    "default-case": "off",
+    "no-shadow": "off",
+    "import/no-dynamic-require": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "global-require": "off",
+    "class-methods-use-this": "off",
+    "prettier/prettier": [
       "error",
       {
-        "trailingComma":"none"
+        "trailingComma": "none"
       }
     ],
-    "comma-dangle":[
-      "error",
-      "never"
-    ],
-    "@typescript-eslint/ban-types":[
-      "off"
-    ],
-    "sort-destructure-keys/sort-destructure-keys":[
+    "comma-dangle": ["error", "never"],
+    "@typescript-eslint/ban-types": ["off"],
+    "sort-destructure-keys/sort-destructure-keys": [
       "error",
       {
-        "caseSensitive":false
+        "caseSensitive": false
       }
     ],
-    "sort-keys-fix/sort-keys-fix":2,
-    "sort-imports":"off",
-    "import/order":"off",
-    "simple-import-sort/imports":[
+    "sort-keys-fix/sort-keys-fix": 2,
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": [
       "error",
       {
-        "groups":[
-          [
-            "^@?\\w"
-          ],
-          [
-            "@/"
-          ],
-          [
-            "(?=.*.interface$)"
-          ],
-          [
-            "(?=.*.const$)"
-          ],
-          [
-            "(?=.*.spec$)"
-          ],
+        "groups": [
+          ["^@?\\w"],
+          ["@/"],
+          ["(?=.*.interface$)"],
+          ["(?=.*.const$)"],
+          ["(?=.*.spec$)"],
           [
             "^\\u0000",
             "^\\.\\.(?!/?$)",
@@ -129,69 +105,43 @@
         ]
       }
     ],
-    "require-jsdoc-except/require-jsdoc":[
-      "error",
-      {
-        "ignore":[
-          "constructor"
-        ],
-        "require":{
-          "ArrowFunctionExpression":true,
-          "ClassDeclaration":true,
-          "FunctionDeclaration":true,
-          "FunctionExpression":true,
-          "MethodDefinition":true
-        }
-      }
-    ],
     "@emotion/pkg-renaming": "error"
   },
-  "overrides":[
+  "overrides": [
     {
-      "files":"**/*.+(ts|tsx)",
-      "parser":"@typescript-eslint/parser",
-      "plugins":[
-        "@typescript-eslint/eslint-plugin",
-        "typescript-sort-keys"
-      ],
-      "extends":[
-        "plugin:@typescript-eslint/recommended"
-      ],
-      "rules":{
-        "@typescript-eslint/explicit-function-return-type":"off",
-        "@typescript-eslint/explicit-module-boundary-types":"off",
-        "no-use-before-define":[
-          0
-        ],
-        "@typescript-eslint/no-use-before-define":[
-          1
-        ],
-        "@typescript-eslint/no-explicit-any":"off",
-        "@typescript-eslint/no-var-requires":"off",
-        "@typescript-eslint/quotes":[
+      "files": "**/*.+(ts|tsx)",
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint/eslint-plugin", "typescript-sort-keys"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "no-use-before-define": [0],
+        "@typescript-eslint/no-use-before-define": [1],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/quotes": [
           2,
           "backtick",
           {
-            "avoidEscape":true
+            "avoidEscape": true
           }
         ],
-        "no-unused-vars":"off",
-        "@typescript-eslint/no-unused-vars":[
-          "error"
-        ],
-        "typescript-sort-keys/interface":"error",
-        "typescript-sort-keys/string-enum":"error"
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "typescript-sort-keys/interface": "error",
+        "typescript-sort-keys/string-enum": "error"
       }
     }
   ],
-  "settings":{
-    "import/resolver":{
-      "typescript":{
-        "project":"."
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "."
       }
     },
-    "react":{
-      "version":"detect"
+    "react": {
+      "version": "detect"
     }
   }
 }

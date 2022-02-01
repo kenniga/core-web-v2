@@ -1,5 +1,5 @@
 schema:
-    - https://release.core.rumah123.com/graphql/query: # path grapql core service
+    - https://rumah123portal.release.99iddev.net/graphql/query: # path grapql core service
           headers:
               X-Client: Y29yZS1jbGllbnQtZm9yLXdlYgo=
 generates:
